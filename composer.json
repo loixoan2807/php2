@@ -1,0 +1,23 @@
+{
+    "name": "loi/xoan",
+    "autoload": {
+        "psr-4": {
+            "Loi\\Xoan\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "loixoan2807",
+            "email": "loixoan2807@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "phroute/phroute": "^2.2",
+        "illuminate/events": "^9.51"
+    }
+}
