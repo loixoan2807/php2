@@ -17,6 +17,12 @@ class ProductController
     {
         $CRUD = new ProductModel();
         $view = "App/view/AddView.php";
+        if (isset($_POST["btn"])) {
+            if ($_POST["name"] != "") {
+                $CRUD->Create($_POST["name"]);
+                header("location:./");
+            }
+        }
         include("app/template/front-end/layout.php");
     }
     public function Update()
@@ -24,6 +30,10 @@ class ProductController
         $CRUD = new ProductModel();
         $update = $CRUD->ShowNameUpdate($_GET["id"]);
         $view = "App/view/EditView.php";
+        if (isset($_POST["edit"])) {
+            $CRUD->Update($_GET["id"], $_POST["edit-name"]);
+            header("location:./");
+        }
         include("App/template/front-end/layout.php");
     }
     public function Delete()
@@ -31,19 +41,5 @@ class ProductController
         $CRUD = new ProductModel();
         $CRUD->Delete($_GET["id"]);
         header("location:./");
-    }
-    public function checkButton()
-    {
-        $CRUD = new ProductModel();
-        if (isset($_POST["btn"])) {
-            if ($_POST["name"] != "") {
-                $CRUD->Create($_POST["name"]);
-                header("location:./");
-            }
-        }
-        if (isset($_POST["edit"])) {
-            $CRUD->Update($_GET["id"], $_POST["edit-name"]);
-            header("location:./");
-        }
     }
 }
